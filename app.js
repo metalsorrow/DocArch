@@ -19,7 +19,7 @@ app.set('view engine','ejs');
 app.set('views','views');
 
 //Routes
-app.use('/category',categoryRoutes);
+app.use(categoryRoutes);
 app.use(documentRoutes);
 
 

@@ -1,0 +1,40 @@
+<%- include('./includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/documents.css">
+</head>
+<%- include('./includes/navegation.ejs') %>
+<main>
+    <div class="container-index p-2">
+        <div class="banner">
+            <h1 class="m-1">DocArch</h1>
+            <p>An application to save differents types of links or information and give as a clasification with categories and managment this items. This is a practice render differents links and urls from the backend using EJS, express, nodeJS and files by json like DataBase. </p>
+        </div>
+        <h2 class="m-2">Documents saved</h2>
+        <div class="container-documents">
+            <% if(documents.length > 0){ %>
+                <% documents.forEach( document => { %>
+
+                <div class="cart p-1">
+                    <div class="cart_header">
+                        <p class="cart_header-date"><%= document.date %></p>
+                        <p class="cart_header-category"><%= document.nameCategory %></p>
+                    </div>
+                    <h3 class="cart-name"><%= document.name %></h3>
+                    <div class="cart__img-container">
+                        <img src="<%= document.urlImg %>" alt="<%= document.name %>">
+                    </div>
+                    <p class="cart-description m-1"> <%= document.description %> </p>
+                    <div class="container-center">
+                        <a href="<%= document.link %>" class="btn btn-accept"> GO </a>
+                    </div>
+
+                    <!-- TODO: Hidden form for something -->
+                </div>
+
+            <% })%>
+            <% } else { %>
+                <h5 >No Documents Filed</h4>
+            <% } %>
+        </div>
+    </div>
+</main>
+<%- include('./includes/footer.ejs') %>

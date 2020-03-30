@@ -1,0 +1,33 @@
+<%- include('./includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<%- include('./includes/navegation.ejs') %>
+<main>
+    <h1 class="m-1">Add New Document</h1>
+    <form action="/add-doc" class="form" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="input-text" class="input-text" placeholder="name your document">
+        <label for="link">Link:</label>
+        <input type="text" name="link" id="input-text" class="input-text" placeholder="link to save">
+        <!-- TODO: radio buttons with id like identifier and the name value -->
+        <% if(categories.length > 0){ %>
+            <div class="radio-btns mb-1">
+                <% categories.forEach( category => { %>
+                        <div class="radio-btn-container">
+                            <input type="radio" name="categoryId" value="<%= category.id %>">
+                            <label for="<%= category.id %>"><%= category.name %></label>
+                        </div>
+                <% })%>
+            </div>
+
+        <% } else { %>
+            <label class="mb-2 caution bg-caution">No categories Filed</label>
+        <% } %>
+        <label for="description"></label>
+        <textarea name="description" id="textarea" rows="10" placeholder="resume . . ." ></textarea>
+        <button type="submit" class="btn btn-accept">Add new Document</button>
+    </form>
+
+
+</main>
+<%- include('./includes/footer.ejs') %>

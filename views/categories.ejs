@@ -1,0 +1,39 @@
+<%- include('./includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<%- include('./includes/navegation.ejs') %>
+<main>
+    <div class="container-category">
+        <div class="col">
+            <h2>Add new Categories</h2>
+            <form action="/add-category" class="form" method="POST">
+                <label for="imageUrl">Image URL:</label>
+                <input type="text" name="imageUrl" id="input-text" class="input-text" placeholder="Url from Img">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="input-text" class="input-text" placeholder="name of category">
+                    <button type="submit" class="btn btn-accept">Add new Category</button>
+            </form>
+        </div>
+        <div class="col">
+            <h2>List Categories</h2>
+            <ul class="categories">
+                <% if(categories.length > 0 ){ %>
+                <% categories.forEach( category => { %>
+
+                    <li class="categories-item">
+                        <p> <%- category.name %> </p>
+                        <form action="/delete-category" method="POST">
+                            <input type="hidden" name="categoryId" value="<%- category.id %>">
+                            <button type="submit" class="btn btn-cancel">Delete</button>
+                        </form>
+                    </li>
+
+                <% }) %>
+                <% } else { %> 
+                    <li>No Categories Archived</li>
+                <% } %> 
+            </ul>
+        </div>
+    </div>
+</main>
+<%- include('./includes/footer.ejs') %>
